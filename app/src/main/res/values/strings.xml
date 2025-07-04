@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Trackable</string>
+    <string name="scan">Scan</string>
+    <string name="uhf">UHF</string>
+</resources>
