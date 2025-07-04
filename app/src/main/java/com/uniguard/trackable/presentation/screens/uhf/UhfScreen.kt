@@ -1,10 +1,7 @@
 package com.uniguard.trackable.presentation.screens.uhf
 
-import android.content.Intent
-import android.content.IntentFilter
 import android.view.KeyEvent
 import android.widget.Toast
-import androidx.compose.foundation.background
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.focusable
 import androidx.compose.foundation.layout.*
@@ -16,7 +13,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.key.onKeyEvent
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
@@ -56,11 +52,11 @@ fun UhfScreen(
         val observer = LifecycleEventObserver { _, event ->
             when (event) {
                 Lifecycle.Event.ON_RESUME -> {
-                    Reader.setOpenScan523(context, false) // 🔒 Disable auto scan
+                    Reader.setOpenScan523(false)
                 }
 
                 Lifecycle.Event.ON_PAUSE -> {
-                    Reader.setOpenScan523(context, true)  // 🔓 Enable auto scan again
+                    Reader.setOpenScan523(true)
                 }
 
                 Lifecycle.Event.ON_DESTROY -> {
@@ -75,7 +71,7 @@ fun UhfScreen(
 
         onDispose {
             lifecycleOwner.lifecycle.removeObserver(observer)
-            Reader.setOpenScan523(context, true) // 🧹 Clean up & enable scan back
+            Reader.setOpenScan523(true)
         }
     }
 

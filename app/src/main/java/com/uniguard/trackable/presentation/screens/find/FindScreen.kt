@@ -12,6 +12,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -26,8 +27,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.key.onKeyEvent
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
+import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.uniguard.trackable.presentation.components.CircleProgressBar
 import com.uniguard.trackable.presentation.screens.uhf.viewmodel.UhfViewModel
+import com.uniguard.trackable.utils.Reader
 
 @Composable
 fun FindScreen() {
@@ -40,6 +45,30 @@ fun FindScreen() {
 
     LaunchedEffect(Unit) {
         focusRequester.requestFocus()
+    }
+
+    val lifecycleOwner = LocalLifecycleOwner.current
+    DisposableEffect(Unit) {
+        val observer = LifecycleEventObserver { _, event ->
+            when (event) {
+                Lifecycle.Event.ON_RESUME -> {
+                    Reader.setOpenScan523(false)
+                }
+
+                Lifecycle.Event.ON_PAUSE -> {
+                    Reader.setOpenScan523(true)
+                }
+
+                else -> {}
+            }
+        }
+
+        lifecycleOwner.lifecycle.addObserver(observer)
+
+        onDispose {
+            lifecycleOwner.lifecycle.removeObserver(observer)
+            Reader.setOpenScan523(true)
+        }
     }
 
     fun toggleFinding() {

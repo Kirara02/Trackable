@@ -1,8 +1,5 @@
 package com.uniguard.trackable.presentation.components
 
-
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Text
@@ -36,7 +33,7 @@ fun DropdownSelector(
             trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded) },
             modifier = Modifier
                 .fillMaxWidth()
-                .menuAnchor()
+                .menuAnchor(MenuAnchorType.PrimaryEditable)
         )
 
         ExposedDropdownMenu(

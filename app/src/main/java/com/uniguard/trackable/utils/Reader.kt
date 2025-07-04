@@ -1,13 +1,12 @@
 package com.uniguard.trackable.utils
 
-import android.content.Context
 import android.device.DeviceManager
 import com.rfid.trans.ReaderHelp
 
 object Reader {
     var rrlib: ReaderHelp = ReaderHelp()
 
-    fun setOpenScan523(context: Context, isOpen: Boolean) {
+    fun setOpenScan523(isOpen: Boolean) {
         try {
             val manager = DeviceManager()
             if (isOpen) {
