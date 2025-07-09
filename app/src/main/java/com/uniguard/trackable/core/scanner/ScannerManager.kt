@@ -1,5 +1,5 @@
 // data/scanner/ScannerManager.kt
-package com.uniguard.trackable.data.scanner
+package com.uniguard.trackable.core.scanner
 
 import android.content.*
 import android.device.ScanManager

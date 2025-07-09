@@ -1,6 +1,6 @@
-package com.uniguard.trackable.data.uhf.repository
+package com.uniguard.trackable.core.uhf.repository
 
-import com.uniguard.trackable.data.uhf.UhfManager
+import com.uniguard.trackable.core.uhf.UhfManager
 import com.uniguard.trackable.domain.uhf.model.InventoryTag
 import com.uniguard.trackable.domain.uhf.repository.UhfRepository
 import kotlinx.coroutines.flow.StateFlow

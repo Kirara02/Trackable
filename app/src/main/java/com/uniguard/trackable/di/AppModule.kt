@@ -1,8 +1,8 @@
 package com.uniguard.trackable.di
 
 import android.content.Context
-import com.uniguard.trackable.data.scanner.ScannerManager
-import com.uniguard.trackable.data.uhf.UhfManager
+import com.uniguard.trackable.core.scanner.ScannerManager
+import com.uniguard.trackable.core.uhf.UhfManager
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -12,6 +12,7 @@ import com.uniguard.trackable.presentation.screens.find.FindScreen
 import com.uniguard.trackable.presentation.screens.login.LoginScreen
 import com.uniguard.trackable.presentation.screens.rnw.ReadWriteScreen
 import com.uniguard.trackable.presentation.screens.scanner.ScannerScreen
+import com.uniguard.trackable.presentation.screens.splash.SplashScreen
 import com.uniguard.trackable.presentation.screens.uhf.UhfScreen
 
 @Composable
@@ -21,9 +22,25 @@ fun AppNavHost(
 ) {
     NavHost(
         navController = navController,
-        startDestination = Route.Login.route,
+        startDestination = Route.Splash.route,
         modifier = Modifier.padding(innerPadding)
     ) {
+
+        composable(Route.Splash.route) {
+            SplashScreen(
+                navigateToLogin = {
+                    navController.navigate(Route.Login.route) {
+                        popUpTo("splash") { inclusive = true }
+                    }
+                },
+                navigateToMain = {
+                    navController.navigate(Route.Scanner.route) {
+                        popUpTo("splash") { inclusive = true }
+                    }
+                }
+            )
+        }
+
         composable(Route.Login.route) {
             LoginScreen(
                 onLoginSuccess = {

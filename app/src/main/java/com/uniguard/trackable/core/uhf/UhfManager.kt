@@ -1,4 +1,4 @@
-package com.uniguard.trackable.data.uhf
+package com.uniguard.trackable.core.uhf
 
 import android.content.Context
 import com.rfid.trans.ReadTag

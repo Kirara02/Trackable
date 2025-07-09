@@ -1,14 +1,17 @@
 package com.uniguard.trackable.di
 
+import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.uniguard.trackable.BuildConfig
 import com.uniguard.trackable.data.local.datastore.PreferenceManager
 import com.uniguard.trackable.data.remote.api.ApiService
 import com.uniguard.trackable.data.remote.interceptor.AuthInterceptor
+import com.uniguard.trackable.data.remote.interceptor.CustomHeaderInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -34,8 +37,18 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(authInterceptor: AuthInterceptor): OkHttpClient =
+    fun provideCustomHeaderInterceptor(@ApplicationContext context: Context): CustomHeaderInterceptor {
+        return CustomHeaderInterceptor(context)
+    }
+
+    @Provides
+    @Singleton
+    fun provideOkHttpClient(
+        authInterceptor: AuthInterceptor,
+        customHeaderInterceptor: CustomHeaderInterceptor
+    ): OkHttpClient =
         OkHttpClient.Builder()
+            .addInterceptor(customHeaderInterceptor)
             .addInterceptor(authInterceptor)
             .addInterceptor(HttpLoggingInterceptor().apply {
                 level = if(BuildConfig.DEBUG){
