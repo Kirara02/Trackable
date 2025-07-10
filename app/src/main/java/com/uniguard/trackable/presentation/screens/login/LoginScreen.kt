@@ -1,6 +1,5 @@
 package com.uniguard.trackable.presentation.screens.login
 
-import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*

@@ -8,4 +8,5 @@ sealed class Route(val route: String) {
     data object Reader : Route("uhf/reader")
     data object Find : Route("uhf/find")
     data object ReadWrite : Route("uhf/read-write")
+    data object Profile : Route("profile")
 }

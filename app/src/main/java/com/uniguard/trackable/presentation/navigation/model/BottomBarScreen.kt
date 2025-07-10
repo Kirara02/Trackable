@@ -17,4 +17,12 @@ sealed class BottomBarScreen (val route: String) {
         iconFocused = R.drawable.outline_network_wifi,
         titleResId = R.string.uhf
     )
+
+    data object  Profile: BottomBar(
+        route = Route.Profile.route,
+        icon = R.drawable.outline_person_outline_24,
+        iconFocused = R.drawable.outline_person_outline_24,
+        titleResId = R.string.profile
+    )
+
 }

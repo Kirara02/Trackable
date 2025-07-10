@@ -4,8 +4,10 @@ import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.uniguard.trackable.BuildConfig
+import com.uniguard.trackable.core.session.UserSessionManager
 import com.uniguard.trackable.data.local.datastore.PreferenceManager
 import com.uniguard.trackable.data.remote.api.ApiService
+import com.uniguard.trackable.data.remote.auth.TokenAuthenticator
 import com.uniguard.trackable.data.remote.interceptor.AuthInterceptor
 import com.uniguard.trackable.data.remote.interceptor.CustomHeaderInterceptor
 import dagger.Module
@@ -43,9 +45,16 @@ object NetworkModule {
 
     @Provides
     @Singleton
+    fun provideTokenAuthenticator(preferenceManager: PreferenceManager) : TokenAuthenticator {
+        return TokenAuthenticator(preferenceManager)
+    }
+
+    @Provides
+    @Singleton
     fun provideOkHttpClient(
         authInterceptor: AuthInterceptor,
-        customHeaderInterceptor: CustomHeaderInterceptor
+        customHeaderInterceptor: CustomHeaderInterceptor,
+        tokenAuthenticator: TokenAuthenticator
     ): OkHttpClient =
         OkHttpClient.Builder()
             .addInterceptor(customHeaderInterceptor)
@@ -57,6 +66,7 @@ object NetworkModule {
                     HttpLoggingInterceptor.Level.NONE
                 }
             })
+            .authenticator(tokenAuthenticator)
             .build()
 
     @Provides

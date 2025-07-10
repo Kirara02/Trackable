@@ -10,6 +10,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import com.uniguard.trackable.presentation.screens.find.FindScreen
 import com.uniguard.trackable.presentation.screens.login.LoginScreen
+import com.uniguard.trackable.presentation.screens.profile.ProfileScreen
 import com.uniguard.trackable.presentation.screens.rnw.ReadWriteScreen
 import com.uniguard.trackable.presentation.screens.scanner.ScannerScreen
 import com.uniguard.trackable.presentation.screens.splash.SplashScreen
@@ -20,6 +21,7 @@ fun AppNavHost(
     navController: NavHostController,
     innerPadding: PaddingValues
 ) {
+
     NavHost(
         navController = navController,
         startDestination = Route.Splash.route,
@@ -46,6 +48,16 @@ fun AppNavHost(
                 onLoginSuccess = {
                     navController.navigate(Route.Scanner.route) {
                         popUpTo(Route.Login.route) { inclusive = true }
+                    }
+                }
+            )
+        }
+
+        composable(Route.Profile.route) {
+            ProfileScreen(
+                onLoggedOut = {
+                    navController.navigate(Route.Login.route) {
+                        popUpTo(Route.Profile.route) { inclusive = true }
                     }
                 }
             )

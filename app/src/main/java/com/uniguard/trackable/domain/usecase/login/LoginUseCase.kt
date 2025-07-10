@@ -1,10 +1,8 @@
 package com.uniguard.trackable.domain.usecase.login
 
-import android.util.Log
 import com.google.gson.Gson
 import com.uniguard.trackable.data.remote.dto.request.LoginRequest
 import com.uniguard.trackable.data.remote.dto.response.LoginResponse
-import com.uniguard.trackable.data.remote.responses.BaseResponse
 import com.uniguard.trackable.domain.repository.AuthRepository
 import com.uniguard.trackable.domain.usecase.FlowUseCase
 import com.uniguard.trackable.presentation.state.Resource

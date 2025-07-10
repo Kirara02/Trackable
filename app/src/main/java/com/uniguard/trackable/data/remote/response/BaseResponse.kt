@@ -1,4 +1,4 @@
-package com.uniguard.trackable.data.remote.responses
+package com.uniguard.trackable.data.remote.response
 
 import com.google.gson.annotations.SerializedName
 
