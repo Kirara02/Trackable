@@ -1,7 +1,6 @@
 package com.uniguard.trackable.data.mapper
 
 import com.uniguard.trackable.data.remote.dto.response.UserDto
-import com.uniguard.trackable.data.remote.dto.response.UserRoleDto
 import com.uniguard.trackable.domain.model.User
 import com.uniguard.trackable.domain.model.UserRole
 
