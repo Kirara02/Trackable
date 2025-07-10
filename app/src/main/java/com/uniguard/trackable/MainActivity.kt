@@ -14,7 +14,6 @@ import androidx.compose.runtime.getValue
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.uniguard.trackable.core.session.SessionLogoutHandler
-import com.uniguard.trackable.core.session.UserSessionManager
 import com.uniguard.trackable.presentation.navigation.AppNavHost
 import com.uniguard.trackable.presentation.navigation.BottomNav
 import com.uniguard.trackable.presentation.navigation.Route

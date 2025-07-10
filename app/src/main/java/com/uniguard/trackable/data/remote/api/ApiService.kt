@@ -3,8 +3,8 @@ package com.uniguard.trackable.data.remote.api
 import com.uniguard.trackable.data.remote.dto.request.LoginRequest
 import com.uniguard.trackable.data.remote.dto.request.LogoutRequest
 import com.uniguard.trackable.data.remote.dto.response.LoginResponse
+import com.uniguard.trackable.data.remote.dto.response.UserDto
 import com.uniguard.trackable.data.remote.response.BaseResponse
-import com.uniguard.trackable.domain.model.User
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.HTTP
@@ -18,6 +18,6 @@ interface ApiService {
     suspend fun logout(@Body request: LogoutRequest) : BaseResponse<Unit>
 
     @GET("web-api/account/profile")
-    suspend fun profile() : BaseResponse<User>
+    suspend fun profile() : BaseResponse<UserDto>
 
 }

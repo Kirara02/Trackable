@@ -4,7 +4,6 @@ import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.uniguard.trackable.BuildConfig
-import com.uniguard.trackable.core.session.UserSessionManager
 import com.uniguard.trackable.data.local.datastore.PreferenceManager
 import com.uniguard.trackable.data.remote.api.ApiService
 import com.uniguard.trackable.data.remote.auth.TokenAuthenticator
